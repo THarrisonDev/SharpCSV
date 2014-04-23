@@ -1,4 +1,4 @@
 SharpCSV
 ========
 
-An entirely .NET expansive and flexible CSV Library!
+An entirely .NET, expansive and flexible CSV Library!
