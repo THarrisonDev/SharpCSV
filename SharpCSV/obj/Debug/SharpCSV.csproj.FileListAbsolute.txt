@@ -1,0 +1,1 @@
+C:\Users\Tim\Documents\GitHub\SharpCSV\SharpCSV\obj\Debug\SharpCSV.csprojResolveAssemblyReference.cache

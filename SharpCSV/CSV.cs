@@ -29,10 +29,45 @@ namespace SharpCSV
 			// If we are told to load from the top then we will load now.
 			if (loadContents)
 			{
-				load();
+				Load();
 			}
 		}
 
+		/// <summary>
+		/// Gets a row of data from the files contents.
+		/// </summary>
+		/// <param name="index"></param>
+		private string[] Row(int index)
+		{
+			return _contents[index];
+		}
+
+		/// <summary>
+		/// Get the string values contained in the specified column.
+		/// </summary>
+		/// <param name="header"></param>
+		/// <param name="columnNum"></param>
+		/// <returns></returns>
+		private List<string> Column(int columnNum = 0, string header = "")
+		{
+			var values = new List<string>();
+
+			// If they gave us the header name we will use it to find the index.
+			if (!String.IsNullOrEmpty(header))
+			{
+				columnNum = Array.IndexOf(_header, header);
+			}
+
+			// Cycle the content.
+			foreach (var row in _contents)
+			{
+				values.Add(row[columnNum]);
+			}
+
+			return values;
+		}
+
+		#region IO
 		private void Load()
 		{
 			// Validate that the file exists.
@@ -76,16 +111,21 @@ namespace SharpCSV
 			using (var writer = new StreamWriter(_path))
 			{
 				// Loop through the Contents and add them to the file.
+				if (_hasHeader)
+				{
+					writer.WriteLine(_header);
+				}
 				writer.WriteLine(_header);
 
 				foreach (var row in _contents)
 				{
-					writer.WriteLine(row, );
+					writer.WriteLine(row);
 				}
 
 				writer.Flush();
 				writer.Close();
 			}
 		}
+		#endregion
 	}
 }
