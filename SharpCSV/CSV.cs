@@ -17,14 +17,23 @@ namespace SharpCSV
 		private string _path;
 		private string[] _header;
 		private List<string[]> _contents;
-		private char[] _seperator;
+		private char _separator;
 		private bool _hasHeader;
 
-		public CSV(string path, bool header, bool loadContents = false)
+		public string[] Header 
+		{
+			get { return _header; }
+			set { _header = value; }
+		}
+
+		public CSV(string path, char seperator, bool header, bool loadContents = false)
 		{
 			// Assign our Path.
 			_path = path;
 			_hasHeader = header;
+			_separator = seperator;
+
+			_contents = new List<string[]>();
 
 			// If we are told to load from the top then we will load now.
 			if (loadContents)
@@ -37,7 +46,7 @@ namespace SharpCSV
 		/// Gets a row of data from the files contents.
 		/// </summary>
 		/// <param name="index"></param>
-		private string[] Row(int index)
+		public string[] Row(int index)
 		{
 			return _contents[index];
 		}
@@ -48,7 +57,7 @@ namespace SharpCSV
 		/// <param name="header"></param>
 		/// <param name="columnNum"></param>
 		/// <returns></returns>
-		private List<string> Column(int columnNum = 0, string header = "")
+		public List<string> Column(int columnNum = 0, string header = "")
 		{
 			var values = new List<string>();
 
@@ -88,7 +97,7 @@ namespace SharpCSV
 					var raw = reader.ReadLine();
 
 					// Split the line based on our separator.
-					var content = raw.Split(_seperator);
+					var content = raw.Split(_separator);
 
 					// Check if we need to log this line as the Header;
 					if (_hasHeader && !headerRead)

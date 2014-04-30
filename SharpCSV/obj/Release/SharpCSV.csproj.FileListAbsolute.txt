@@ -1,0 +1,5 @@
+C:\Users\t.harrison1\Documents\GitHub\SharpCSV\SharpCSV\bin\Release\SharpCSV.dll
+C:\Users\t.harrison1\Documents\GitHub\SharpCSV\SharpCSV\bin\Release\SharpCSV.pdb
+C:\Users\t.harrison1\Documents\GitHub\SharpCSV\SharpCSV\obj\Release\SharpCSV.csprojResolveAssemblyReference.cache
+C:\Users\t.harrison1\Documents\GitHub\SharpCSV\SharpCSV\obj\Release\SharpCSV.dll
+C:\Users\t.harrison1\Documents\GitHub\SharpCSV\SharpCSV\obj\Release\SharpCSV.pdb
